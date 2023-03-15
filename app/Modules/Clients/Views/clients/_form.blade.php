@@ -282,3 +282,41 @@
     @endif
 
 </div>
+<script>
+    $(document).ready(function() {
+        var isCompanySelect = $('#is_company');
+        var mobileInput = $('#mobile');
+        var mobileLabel = mobileInput.prev();
+        var idNumberInput = $('#id_number');
+        var idNumberLabel = idNumberInput.prev();
+
+        // check on page load
+        toggleMobileRequired(isCompanySelect.val());
+        toggleIdNumberRequired(isCompanySelect.val());
+
+        // toggle on change
+        isCompanySelect.on('change', function() {
+            toggleMobileRequired($(this).val());
+            toggleIdNumberRequired($(this).val());
+        });
+
+        function toggleMobileRequired(value) {
+            if (value === '0') {
+                mobileInput.attr('required', '');
+                mobileLabel.html('@lang('bt.mobile_number')*:');
+            } else {
+                mobileInput.removeAttr('required');
+                mobileLabel.html('@lang('bt.mobile_number'):');
+            }
+        }
+        function toggleIdNumberRequired(value) {
+            if (value === '1') {
+                idNumberInput.attr('required', '');
+                idNumberLabel.html('@lang('bt.id_number')*:');
+            } else {
+                idNumberInput.removeAttr('required');
+                idNumberLabel.html('@lang('bt.id_number'):');
+            }
+        }
+    });
+</script>
