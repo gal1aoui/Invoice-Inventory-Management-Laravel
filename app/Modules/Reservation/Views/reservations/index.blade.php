@@ -16,7 +16,7 @@
         <div class="card ">
             <div class="card-body">
                 <table class="table">
-                    <thead class="thead-dark">
+                    <thead class="thead-primary">
                         <tr>
                             <th scope="col">Hotel</th>
                             <th scope="col">Name</th>
