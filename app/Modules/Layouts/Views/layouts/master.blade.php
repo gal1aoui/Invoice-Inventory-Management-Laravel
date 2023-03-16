@@ -9,11 +9,10 @@
     <title>{{ config('bt.headerTitleText') }}</title>
 
     <link rel="stylesheet" href="/css/app.css">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
     @include('layouts._head')
 
     <script src="/js/app.js"></script>
-
     @include('layouts._js_global')
 
     @yield('javascript')

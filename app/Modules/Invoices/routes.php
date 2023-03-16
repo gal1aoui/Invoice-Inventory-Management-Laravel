@@ -19,6 +19,7 @@ Route::middleware(['web', 'auth.admin'])->namespace('BT\Modules\Invoices\Control
         Route::name('delete')->get('{id}/delete', 'InvoiceController@delete');
         Route::name('pdf')->get('{id}/pdf', 'InvoiceController@pdf');
         Route::name('ajaxLookup')->get('ajaxLookup/{name}', 'InvoiceController@ajaxLookup');
+        Route::name('products.autocomplete')->get('products/autocomplete', 'InvoiceEditController@autocomplete');
 
         Route::name('invoiceEdit.refreshEdit')->get('{id}/edit/refresh', 'InvoiceEditController@refreshEdit');
         Route::name('invoiceEdit.refreshTo')->post('edit/refresh_to', 'InvoiceEditController@refreshTo');
@@ -29,6 +30,7 @@ Route::middleware(['web', 'auth.admin'])->namespace('BT\Modules\Invoices\Control
         Route::name('recalculate')->post('recalculate', 'InvoiceRecalculateController@recalculate');
         Route::name('bulk.delete')->post('bulk/delete', 'InvoiceController@bulkDelete');
         Route::name('bulk.status')->post('bulk/status', 'InvoiceController@bulkStatus');
+
     });
 
     Route::prefix('invoice_copy')->name('invoiceCopy.')->group(function () {
