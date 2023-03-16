@@ -24,6 +24,12 @@
                 <label>Name:</label>
                 <input type="text" name="name" class="form-control" value="{{ $reservation->name }}">
                 <br>
+                <label>Status:</label>
+                <select class="form-control" name="used">
+                    <option value="1" @if($reservation->used == 1) selected @endif> Reserved</option>
+                    <option value="0" @if($reservation->used == 0) selected @endif> Free</option>
+                </select>
+                <br>
                 <label>Email:</label>
                 <input type="email" name="email" class="form-control" value="{{ $reservation->email }}">
                 <br>

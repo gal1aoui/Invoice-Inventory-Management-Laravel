@@ -20,6 +20,8 @@ use BT\Modules\Invoices\Support\InvoiceTemplates;
 use BT\Modules\Invoices\Requests\InvoiceUpdateRequest;
 use BT\Modules\ItemLookups\Models\ItemLookup;
 use BT\Modules\Products\Models\Product;
+use BT\Modules\Reservation\Models\Reservation;
+use BT\Modules\Reservation\Requests\ReservationRequest;
 use BT\Modules\TaxRates\Models\TaxRate;
 use BT\Support\DateFormatter;
 use BT\Support\Statuses\InvoiceStatuses;
@@ -42,6 +44,13 @@ class InvoiceEditController extends Controller
             ->with('returnUrl', $this->getReturnUrl())
             ->with('templates', InvoiceTemplates::lists())
             ->with('itemCount', count($invoice->invoiceItems));
+    }
+
+    public function autocomplete(ReservationRequest $request)
+    {
+        $term = $request->input('name');
+        $products = Reservation::where('name', 'LIKE', '%'.$term.'%')->where('used', '0')->get()->pluck('name');
+        return response()->json($products);
     }
 
     public function update(InvoiceUpdateRequest $request, $id)

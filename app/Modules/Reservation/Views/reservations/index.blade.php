@@ -23,6 +23,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Start Time</th>
                             <th scope="col">End Time</th>
+                            <th scope="col">Reserved</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -34,6 +35,10 @@
                                 <td>{{ $reservation->email }}</td>
                                 <td>{{ $reservation->start_time }}</td>
                                 <td>{{ $reservation->end_time }}</td>
+                                <td>
+                                    @if($reservation->used == 1) Reserved @endif
+                                    @if($reservation->used == 0) Free @endif
+                                </td>
                                 <td class="d-flex justify-content-around">
                                     <a href="{{ route('reservations.edit', $reservation->id) }}" class="btn btn-warning">Edit</a>
                                     <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST">
