@@ -41,11 +41,12 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'          => 'required',
+            /*'name'          => 'required',
             'hotel'         => 'required',
+            //'used'          => 'required',
             'email'         => 'required',
             'start_time'    => 'required',
-            'end_time'      => 'required',
+            'end_time'      => 'required',*/
         ];
     }
 }

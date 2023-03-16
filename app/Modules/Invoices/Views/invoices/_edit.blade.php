@@ -1,3 +1,4 @@
+
 @include('invoices._js_edit')
 
 <section class="content-header">
@@ -149,7 +150,8 @@
                                         {!! Form::hidden('id', '') !!}
                                         {!! Form::hidden('resource_table', '') !!}
                                         {!! Form::hidden('resource_id', '') !!}
-                                        {!! Form::text('name', null, ['class' => 'form-control']) !!}<br>
+                                        {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'product']) !!}<br>
+                                        <div id="selected-product"> </div>
                                         <label><input type="checkbox" name="save_item_as_lookup" tabindex="999"> @lang('bt.save_item_as_lookup')</label>
                                     </td>
                                     <td>{!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => 1]) !!}</td>
@@ -372,3 +374,21 @@
     </div>
 
 </section>
+@php
+@endphp
+<script>
+    $(document).ready(function() {
+        $('input#product').on('input', function() {
+            var term = $(this).val();
+            $.ajax({
+                url: 'http://127.0.0.1:8000/invoices/products/autocomplete',
+                method: 'GET',
+                data: { name: term },
+                success: function(data) {
+                        $('div#selected-product').html(data);
+                }
+            });
+    });
+    });
+
+</script>

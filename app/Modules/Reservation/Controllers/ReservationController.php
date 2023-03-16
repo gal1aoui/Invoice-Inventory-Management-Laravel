@@ -51,4 +51,6 @@ class ReservationController extends Controller
         $reservation->delete();
         return redirect()->route('reservations.index');
     }
+
+
 }
