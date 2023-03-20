@@ -32,6 +32,9 @@
                 <label>@lang('bt.check_out') :</label>
                 <input type="datetime-local" name="end_time" class="form-control">
                 <br>
+                <label>@lang('bt.description') :</label>
+                <input type="text" name="description" class="form-control">
+                <br>
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-success">@lang('bt.create_reservation')</button>
             </form>

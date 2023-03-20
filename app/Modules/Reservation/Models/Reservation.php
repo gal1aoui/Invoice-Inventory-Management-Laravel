@@ -23,6 +23,6 @@ class Reservation extends Model
 
 	protected $table = 'reservations';
 
-    protected $fillable = ['name', 'used', 'hotel', 'email', 'start_time', 'end_time'];
+    protected $fillable = ['name', 'used', 'hotel', 'email', 'start_time', 'end_time','description'];
 
 }

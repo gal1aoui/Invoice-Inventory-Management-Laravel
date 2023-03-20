@@ -25,6 +25,7 @@
                         <th scope="col">@lang('bt.check_in')</th>
                         <th scope="col">@lang('bt.check_out')</th>
                         <th scope="col">@lang('bt.reserved')</th>
+                        <th scope="col">@lang('bt.description')</th>
                         <th scope="col">@lang('bt.actions')</th>
                     </tr>
                 </thead>
@@ -41,6 +42,7 @@
                             @if($reservation->used == 1) @lang('bt.reserved') @endif
                             @if($reservation->used == 0) @lang('bt.available') @endif
                         </td>
+                        <td>{{ $reservation->description }}</td>
                         <td class="d-flex justify-content-around">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

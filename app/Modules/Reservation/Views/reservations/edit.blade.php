@@ -39,6 +39,9 @@
                 <label>@lang('bt.check_out'):</label>
                 <input type="datetime-local" name="end_time" class="form-control" value="{{ date('Y-m-d\TH:i', strtotime($reservation->end_time)) }}">
                 <br>
+                <label>@lang('bt.description'):</label>
+                <input type="text" name="description" class="form-control" value="{{ $reservation->description }}">
+                <br>
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-success">@lang('bt.update_reservation')</button>
             </form>
