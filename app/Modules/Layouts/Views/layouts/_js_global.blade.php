@@ -174,7 +174,7 @@
                 redirectTo: $(this).data('redirect-to')
             }, function (response, status, xhr) {
                 if (status == 'error') {
-                    notify('@lang('bt.problem_with_email_template')','error');
+                    notify("@lang('bt.problem_with_email_template')",'error');
                 }
             });
         });
@@ -185,7 +185,7 @@
                 redirectTo: $(this).data('redirect-to')
             }, function (response, status, xhr) {
                 if (status == 'error') {
-                    notify('@lang('bt.problem_with_email_template')','error');
+                    notify("@lang('bt.problem_with_email_template')",'error');
                 }
             });
         });
@@ -196,7 +196,7 @@
                 redirectTo: $(this).data('redirect-to')
             }, function (response, status, xhr) {
                 if (status == 'error') {
-                    notify('@lang('bt.problem_with_email_template')','error');
+                    notify("@lang('bt.problem_with_email_template')",'error');
                 }
             });
         });
