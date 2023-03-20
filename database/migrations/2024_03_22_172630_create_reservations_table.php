@@ -22,6 +22,8 @@ class CreateReservationsTable extends Migration
         $table->string('email');
         $table->dateTime('start_time');
         $table->dateTime('end_time');
+        $table->unsignedBigInteger('client_id');
+        $table->foreign('client_id')->references('id')->on('clients');
         $table->timestamps();
     });
 }
@@ -29,5 +31,9 @@ class CreateReservationsTable extends Migration
 public function down()
 {
     Schema::dropIfExists('reservations');
+    Schema::table('reservations', function (Blueprint $table) {
+        $table->dropForeign(['client_id']);
+        $table->dropColumn('client_id');
+    });
 }
 }

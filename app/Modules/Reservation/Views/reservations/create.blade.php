@@ -35,6 +35,16 @@
                 <label>@lang('bt.description') :</label>
                 <input type="text" name="description" class="form-control">
                 <br>
+                <label>@lang('bt.client') :</label>
+                <div class="form-group">
+                    <select name="client_id" id="client_id" class="form-control" required>
+                        @foreach(\BT\Modules\Clients\Models\Client::pluck('name', 'id') as $clientId => $clientName)
+                            <option value="{{ $clientId }}" {{ old('client_id') == $clientId ? 'selected' : '' }}>{{ $clientName }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <br>
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-success">@lang('bt.create_reservation')</button>
             </form>
