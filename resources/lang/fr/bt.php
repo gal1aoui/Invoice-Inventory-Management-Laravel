@@ -134,6 +134,8 @@ return [
     'change_status' => 'Modifier le statut',
     'change_vendor' => 'Changer le fournisseur',
     'change_workorder_date_to_todays_date' => 'Changer la date de l\'ordre de travail pour aujourd\'hui',
+    'check_in'=>'Check-in',
+    'check_out'=>'Check-out',
     'check_for_update' => 'Vérifier les mises à jour',
     'choose_invoice_to_bill' => 'Choisir la facture à facturer',
     'city' => 'Ville',

@@ -21,8 +21,8 @@
                         <th scope="col">@lang('bt.hotel')</th>
                         <th scope="col">@lang('bt.hotel')</th>
                         <th scope="col">@lang('bt.email')</th>
-                        <th scope="col">@lang('bt.start_time')</th>
-                        <th scope="col">@lang('bt.end_time')</th>
+                        <th scope="col">@lang('bt.check_in')</th>
+                        <th scope="col">@lang('bt.check_out')</th>
                         <th scope="col">@lang('bt.reserved')</th>
                         <th scope="col">@lang('bt.actions')</th>
                     </tr>

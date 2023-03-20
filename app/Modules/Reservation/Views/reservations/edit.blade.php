@@ -33,10 +33,10 @@
                 <label>@lang('bt.email'):</label>
                 <input type="email" name="email" class="form-control" value="{{ $reservation->email }}">
                 <br>
-                <label>@lang('bt.start_time'):</label>
+                <label>@lang('bt.check_in'):</label>
                 <input type="datetime-local" name="start_time" class="form-control" value="{{ date('Y-m-d\TH:i', strtotime($reservation->start_time)) }}">
                 <br>
-                <label>@lang('bt.end_time'):</label>
+                <label>@lang('bt.check_out'):</label>
                 <input type="datetime-local" name="end_time" class="form-control" value="{{ date('Y-m-d\TH:i', strtotime($reservation->end_time)) }}">
                 <br>
                 <div class="d-flex justify-content-between">

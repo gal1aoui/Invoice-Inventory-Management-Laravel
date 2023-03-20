@@ -29,7 +29,7 @@
                 <label>@lang('bt.start_time') :</label>
                 <input type="datetime-local" name="start_time" class="form-control">
                 <br>
-                <label>@lang('bt.end_time') :</label>
+                <label>@lang('bt.check_out') :</label>
                 <input type="datetime-local" name="end_time" class="form-control">
                 <br>
                 <div class="d-flex justify-content-between">
