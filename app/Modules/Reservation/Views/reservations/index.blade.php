@@ -19,7 +19,7 @@
                 <thead class="thead text-white" style="background-color: rgb(149, 97, 226);">
                     <tr>
                         <th scope="col">@lang('bt.hotel')</th>
-                        <th scope="col">@lang('bt.hotel')</th>
+                        <th scope="col">@lang('bt.name')</th>
                         <th scope="col">@lang('bt.email')</th>
                         <th scope="col">@lang('bt.check_in')</th>
                         <th scope="col">@lang('bt.check_out')</th>
