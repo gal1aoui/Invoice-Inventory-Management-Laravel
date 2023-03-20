@@ -18,6 +18,7 @@
             <table class="table table-striped">
                 <thead class="thead text-white" style="background-color: rgb(149, 97, 226);">
                     <tr>
+                        <th scope="col">@lang('bt.id')</th>
                         <th scope="col">@lang('bt.hotel')</th>
                         <th scope="col">@lang('bt.name')</th>
                         <th scope="col">@lang('bt.email')</th>
@@ -30,6 +31,7 @@
                 <tbody>
                     @foreach ($reservations as $reservation)
                     <tr scope="row">
+                        <td>{{ $reservation->id }}</td>
                         <td>{{ $reservation->hotel }}</td>
                         <td>{{ $reservation->name }}</td>
                         <td>{{ $reservation->email }}</td>
