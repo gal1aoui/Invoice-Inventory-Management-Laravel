@@ -27,6 +27,7 @@
                         <th scope="col">@lang('bt.reserved')</th>
                         <th scope="col">@lang('bt.description')</th>
                         <th scope="col">@lang('bt.client')</th>
+                        <th scope="col">@lang('bt.vendor')</th>
                         <th scope="col">@lang('bt.actions')</th>
                     </tr>
                 </thead>
@@ -45,6 +46,7 @@
                         </td>
                         <td>{{ $reservation->description }}</td>
                         <td>{{ $reservation->client->name }}</td>
+                        <td>{{ optional($reservation->vendor)->name ?? 'N/A' }}</td>
                         <td class="d-flex justify-content-around">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

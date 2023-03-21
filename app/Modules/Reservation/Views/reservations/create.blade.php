@@ -43,6 +43,14 @@
                         @endforeach
                     </select>
                 </div>
+                <label>@lang('bt.vendor') :</label>
+                <div class="form-group">
+                    <select name="vendor_id" id="vendor_id" class="form-control" required>
+                        @foreach(\BT\Modules\Vendors\Models\Vendor::pluck('name', 'id') as $vendorId => $vendorName)
+                            <option value="{{ $vendorId }}" {{ old('vendor_id') == $vendorId ? 'selected' : '' }}>{{ $vendorName }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
                 <br>
                 <div class="d-flex justify-content-between">

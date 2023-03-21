@@ -49,6 +49,13 @@
                     @endforeach
                 </select>
                 <br>
+                <label for="vendor_id">Vendor</label>
+                <select name="vendor_id" id="vendor_id" class="form-control" required>
+                    @foreach(\BT\Modules\Vendors\Models\Vendor::pluck('name', 'id') as $vendorId => $vendorName)
+                        <option value="{{ $vendorId }}" {{ old('vendor_id', $reservation->vendor_id ?? '') == $vendorId ? 'selected' : '' }}>{{ $vendorName }}</option>
+                    @endforeach
+                </select>
+                <br>
                 <div class="d-flex justify-content-between">
                     <button type="submit" class="btn btn-success">@lang('bt.update_reservation')</button>
             </form>
