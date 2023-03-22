@@ -14,7 +14,7 @@ use BT\DataTables\ReservationsDataTable;
 use BT\Modules\Reservation\Models\Reservation;
 use BT\Http\Controllers\Controller;
 use BT\Modules\Reservation\Requests\ReservationRequest;
-use Request;
+use BT\Modules\Rooms\Models\Room;
 
 class ReservationController extends Controller
 {
@@ -32,6 +32,23 @@ class ReservationController extends Controller
     public function store(ReservationRequest $request)
     {
         Reservation::create($request->all());
+        $roomsData = $request->input('rooms');
+
+        $rooms = collect($roomsData)->map(function($data){
+           return [
+             'client_id' => "client",
+               'name' => "Room client",
+               'purchase_price' => $data['purchase_price'],
+               'selling_price' => $data['selling_price'],
+               'adults_number' => $data['adults_number'],
+               'kids_number' => $data['kids_number'],
+               'number' => intval($data['adults_number']) + intval($data['kids_number']),
+               'type' => $data['type'],
+               'room_formula' => $data['room_formula']
+           ];
+        })->toArray();
+
+        Room::insert($rooms);
         return redirect()->route('reservations.index');
     }
 
