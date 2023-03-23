@@ -33,11 +33,11 @@ class ReservationController extends Controller
     {
         Reservation::create($request->all());
         $roomsData = $request->input('rooms');
-
-        $rooms = collect($roomsData)->map(function($data){
+        $clientId = $request->input('client_id');
+        $rooms = collect($roomsData)->map(function($data) use ($clientId){
            return [
-             'client_id' => "client",
-               'name' => "Room client",
+               'client_id' => $clientId,
+               'name' => "Room ID : ".strval($clientId),
                'purchase_price' => $data['purchase_price'],
                'selling_price' => $data['selling_price'],
                'adults_number' => $data['adults_number'],
