@@ -212,9 +212,7 @@
                             </div>
 
                             <div id="tab-reservations" class="tab-pane">
-                                <div class="card">
-
-                                </div>
+                                @include('reservations.show', ['object' => $client, 'model' => 'BT\Modules\Clients\Models\Client', 'hideHeader' => false])
                             </div>
                         </div>
                     </div>

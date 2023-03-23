@@ -65,7 +65,6 @@ class ClientController extends Controller
         //$this->setReturnUrl();
 
         $client = Client::getSelect()->find($clientId);
-        $clients= Client::all();
 
         $invoices = $client->invoices()
             ->with(['client', 'activities', 'amount.invoice.currency'])
@@ -73,10 +72,7 @@ class ClientController extends Controller
             ->orderBy('id', 'desc')
             ->take(config('bt.resultsPerPage'))->get();
 
-        $reservations = $clients
-            ->with(['reservations'])
-            ->orderBy('created_at', 'desc')
-            ->orderBy('id', 'desc')
+        $reservations = $client->reservations()
             ->take(config('bt.resultsPerPage'))->get();
 
         $quotes = $client->quotes()
