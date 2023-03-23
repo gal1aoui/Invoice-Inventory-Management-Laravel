@@ -699,6 +699,7 @@ return [
     'restore'                                 => 'Restore',
     'results_per_page'                        => 'Results Per Page',
     'revenue_by_client'                       => 'Revenue by Client',
+    'room'                                    => 'Room',
     'round_tax_decimals'                      => 'Number of Decimals for Tax Rounding',
     'run_report'                              => 'Run Report',
     'sales'                                   => 'Sales',
