@@ -65,9 +65,16 @@ class ClientController extends Controller
         //$this->setReturnUrl();
 
         $client = Client::getSelect()->find($clientId);
+        $clients= Client::all();
 
         $invoices = $client->invoices()
             ->with(['client', 'activities', 'amount.invoice.currency'])
+            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
+            ->take(config('bt.resultsPerPage'))->get();
+
+        $reservations = $clients
+            ->with(['reservations'])
             ->orderBy('created_at', 'desc')
             ->orderBy('id', 'desc')
             ->take(config('bt.resultsPerPage'))->get();
@@ -93,6 +100,7 @@ class ClientController extends Controller
         return view('clients.view')
             ->with('client', $client)
             ->with('invoices', $invoices)
+            ->with('reservations', $reservations)
             ->with('quotes', $quotes)
             ->with('workorders', $workorders)
             ->with('payments', Payment::clientId($clientId)->orderBy('paid_at', 'desc')->get())

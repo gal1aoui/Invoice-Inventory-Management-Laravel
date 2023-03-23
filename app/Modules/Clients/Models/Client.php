@@ -25,7 +25,7 @@ class Client extends Model
     use SoftCascadeTrait;
 
     protected $softCascade = ['contacts', 'custom', 'invoices', 'workorders', 'quotes',  'projects','recurringInvoices',
-                            'merchant', 'attachments', 'notes'];
+                            'merchant', 'attachments', 'notes','reservations'];
 
     protected $dates = ['deleted_at'];
 
@@ -91,6 +91,10 @@ class Client extends Model
     public function invoices()
     {
         return $this->hasMany('BT\Modules\Invoices\Models\Invoice');
+    }
+    public function reservations()
+    {
+        return $this->hasMany('BT\Modules\Reservation\Models\Reservation');
     }
 
     public function payments()
