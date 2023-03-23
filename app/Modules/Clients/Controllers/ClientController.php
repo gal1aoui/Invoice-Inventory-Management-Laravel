@@ -72,6 +72,8 @@ class ClientController extends Controller
             ->orderBy('id', 'desc')
             ->take(config('bt.resultsPerPage'))->get();
 
+        $reservations = $client->reservations()
+            ->take(config('bt.resultsPerPage'))->get();
         $quotes = $client->quotes()
             ->with(['client', 'activities', 'amount.quote.currency'])
             ->orderBy('created_at', 'desc')
@@ -93,6 +95,7 @@ class ClientController extends Controller
         return view('clients.view')
             ->with('client', $client)
             ->with('invoices', $invoices)
+            ->with('reservations', $reservations)
             ->with('quotes', $quotes)
             ->with('workorders', $workorders)
             ->with('payments', Payment::clientId($clientId)->orderBy('paid_at', 'desc')->get())
