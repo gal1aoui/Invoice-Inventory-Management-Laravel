@@ -13,6 +13,7 @@ namespace BT\Modules\Reservation\Controllers;
 use BT\DataTables\ReservationsDataTable;
 use BT\Modules\Reservation\Models\Reservation;
 use BT\Http\Controllers\Controller;
+use BT\Modules\Invoices\Models\InvoiceItem;
 use BT\Modules\Reservation\Requests\ReservationRequest;
 use BT\Modules\Rooms\Models\Room;
 
@@ -21,7 +22,8 @@ class ReservationController extends Controller
     public function index(ReservationsDataTable $dataTable)
     {
         $reservations = Reservation::all();
-        return $dataTable->render('reservations.index', compact('reservations'));
+        $invoiceItems = InvoiceItem::all();
+        return $dataTable->render('reservations.index', compact('reservations', 'invoiceItems'));
     }
 
     public function create()
