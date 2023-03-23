@@ -12,28 +12,25 @@ class CreateReservationsTable extends Migration
      * @return void
      */
     public function up()
-{
-    Schema::create('reservations', function (Blueprint $table) {
-        $table->id();
-        $table->string('name');
-        $table->string('description');
-        $table->boolean('used')->default(false);
-        $table->string('hotel');
-        $table->string('email');
-        $table->dateTime('start_time');
-        $table->dateTime('end_time');
-        $table->unsignedBigInteger('client_id');
-        $table->foreign('client_id')->references('id')->on('clients');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('reservations', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->boolean('used')->default(false);
+            $table->string('hotel');
+            $table->string('email');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->unsignedBigInteger('client_id')->index('clients')->nullable();
+            $table->unsignedBigInteger('invoice_id')->index('invoices')->nullable();
+            $table->unsignedBigInteger('vendor_id')->index('vendors')->nullable();
+            $table->timestamps();
+        });
+    }
 
-public function down()
-{
-    Schema::dropIfExists('reservations');
-    Schema::table('reservations', function (Blueprint $table) {
-        $table->dropForeign(['client_id']);
-        $table->dropColumn('client_id');
-    });
-}
+    public function down()
+    {
+        Schema::dropIfExists('reservations');
+    }
 }

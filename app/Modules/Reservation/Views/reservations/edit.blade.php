@@ -2,11 +2,11 @@
 
 @section('content')
 <section class="content-header">
-    <h3 class="float-left">@lang('bt.reservation')</h3>
+    <h3 class="float-left">@lang('bt.sales')</h3>
 
     <div class="float-right">
         <a href="{{ route('reservations.create') }}" class="btn btn-primary">
-            <i class="fa fa-credit-card"></i> @lang('bt.create_reservation')
+            <i class="fa fa-credit-card"></i> @lang('bt.create_sales')
         </a>
     </div>
     <div class="clearfix"></div>

@@ -214,6 +214,7 @@ return [
     'create_recurring_invoice'                => 'Create Recurring Invoice',
     'create_vendor'                           => 'Create Vendor',
     'create_workorder'                        => 'Create Workorder',
+    'create_sales'                            => 'Create Sales',
     'created'                                 => 'Created',
     'criteria_batchprint'                     => 'Select Criteria for BatchPrint',
     'criteria_timesheet'                      => 'Select Criteria for TimeSheet',
