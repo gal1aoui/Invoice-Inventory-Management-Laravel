@@ -15,11 +15,12 @@
         "ifsnop/mysqldump-php": "2.*",
         "knplabs/knp-snappy": "^1.2",
         "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.6",
         "laravel/helpers": "^1.4",
         "laravel/legacy-factories": "^1.1",
+        "laravel/tinker": "^2.6",
         "laravelcollective/html": "^6.2",
         "mollie/mollie-api-php": "^2.29",
+        "nwidart/laravel-modules": "^8.3",
         "paypal/rest-api-sdk-php": "^1.14",
         "simshaun/recurr": "^4.0",
         "sonata-project/exporter": "^2.5",
@@ -79,7 +80,10 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "symfony/thanks": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
