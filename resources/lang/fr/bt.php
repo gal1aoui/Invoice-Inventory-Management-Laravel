@@ -613,7 +613,6 @@ return [
     'products' => 'Produits',
     'reservations' => 'Réservations',
     'reserved' => 'Réservé',
-    'room' => 'Chambre',
     'profit_and_loss' => 'Bénéfices et Pertes',
     'project' => 'Projet',
     'project_name' => 'Nom du Projet',

@@ -91,7 +91,7 @@
 
             function roomsNumber(number)
             {
-                let content ='';
+                let content;
                 if(number == 0){
                     content = "";
                 }else {

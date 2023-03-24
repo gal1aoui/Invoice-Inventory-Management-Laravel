@@ -49,8 +49,6 @@
                                                      href="#tab-attachments">@lang('bt.attachments')</a></li>
                             <li class="nav-item "><a class="nav-link" data-toggle="tab"
                                                      href="#tab-notes">@lang('bt.notes')</a></li>
-                            <li class="nav-item "><a class="nav-link" data-toggle="tab"
-                                                     href="#tab-reservations">@lang('bt.reservations')</a></li>
                         </ul>
                     </div>
                     <div class="card-body">
@@ -210,9 +208,6 @@
 
                             <div id="tab-notes" class="tab-pane">
                                 @include('notes._notes', ['object' => $client, 'model' => 'BT\Modules\Clients\Models\Client', 'hideHeader' => true])
-                            </div>
-                            <div id="tab-reservations" class="tab-pane">
-                                @include('reservations.show', ['object' => $client, 'model' => 'BT\Modules\Clients\Models\Client', 'hideHeader' => true])
                             </div>
                         </div>
                     </div>

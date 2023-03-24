@@ -13,7 +13,6 @@ namespace BT\Modules\Reservation\Controllers;
 use BT\DataTables\ReservationsDataTable;
 use BT\Modules\Reservation\Models\Reservation;
 use BT\Http\Controllers\Controller;
-use BT\Modules\Invoices\Models\InvoiceItem;
 use BT\Modules\Reservation\Requests\ReservationRequest;
 use BT\Modules\Rooms\Models\Room;
 
@@ -22,8 +21,7 @@ class ReservationController extends Controller
     public function index(ReservationsDataTable $dataTable)
     {
         $reservations = Reservation::all();
-        $invoiceItems = InvoiceItem::all();
-        return $dataTable->render('reservations.index', compact('reservations', 'invoiceItems'));
+        return $dataTable->render('reservations.index', compact('reservations'));
     }
 
     public function create()
@@ -35,11 +33,11 @@ class ReservationController extends Controller
     {
         Reservation::create($request->all());
         $roomsData = $request->input('rooms');
-        $clientId = $request->input('client_id');
-        $rooms = collect($roomsData)->map(function($data) use ($clientId){
+
+        $rooms = collect($roomsData)->map(function($data){
            return [
-               'client_id' => $clientId,
-               'name' => "Room ID : ".strval($clientId),
+             'client_id' => "client",
+               'name' => "Room client",
                'purchase_price' => $data['purchase_price'],
                'selling_price' => $data['selling_price'],
                'adults_number' => $data['adults_number'],
