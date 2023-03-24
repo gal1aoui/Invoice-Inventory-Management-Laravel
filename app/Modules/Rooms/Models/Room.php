@@ -23,6 +23,6 @@ class Room extends Model
 
 	protected $table = 'rooms';
 
-    protected $fillable = ['name', 'client_id', 'purchase_price', 'selling_price', 'adults_number', 'kids_number', 'number','type','room_formula'];
+    protected $fillable = ['name', 'client_id', 'reservation_id', 'purchase_price', 'selling_price', 'adults_number', 'kids_number', 'number','type','room_formula'];
 
 }

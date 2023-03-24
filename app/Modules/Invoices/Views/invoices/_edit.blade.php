@@ -377,18 +377,51 @@
 @php
 @endphp
 <script>
+    // $(document).ready(function() {
+    //     $('input#product').on('input', function() {
+    //         var term = $(this).val();
+    //         $.ajax({
+    //             url: 'http://localhost:8000/invoices/products/autocomplete',
+    //             method: 'GET',
+    //             data: { name: term },
+    //             success: function(data) {
+    //                     $('div#selected-product').html(data);
+    //                     console.log(data);
+    //             }
+    //         });
+    // });
+    // });
+
     $(document).ready(function() {
-        $('input#product').on('input', function() {
-            var term = $(this).val();
-            $.ajax({
-                url: 'http://127.0.0.1:8000/invoices/products/autocomplete',
-                method: 'GET',
-                data: { name: term },
-                success: function(data) {
-                        $('div#selected-product').html(data);
-                }
-            });
+  $('input#product').on('input', function() {
+    var term = $(this).val();
+    $.ajax({
+      url: 'http://localhost:8000/invoices/products/autocomplete',
+      method: 'GET',
+      data: { name: term },
+      success: function(data) {
+        // Create a list of suggestions
+        var suggestionsList = $('<ul>');
+        Object.entries(data).forEach(function([id, value]) {
+          // Create a list item for each suggestion and add a click event listener
+          var listItem = $('<li>').text("ID: "+id+" => "+value);
+          listItem.click(function() {
+            $('input#product').val(value);
+            $('div#selected-product').empty();
+          });
+          suggestionsList.append(listItem);
+        });
+
+        // Replace the suggestions container with the new list
+        $('div#selected-product').html(suggestionsList);
+      }
     });
-    });
+  });
+
+  // Hide the suggestions container when the input loses focus
+  $('input#product').blur(function() {
+    $('div#selected-product').empty();
+  });
+});
 
 </script>

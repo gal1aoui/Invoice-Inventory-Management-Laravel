@@ -41,7 +41,13 @@
                         <td>{{ $reservation->start_time }}</td>
                         <td>{{ $reservation->end_time }}</td>
                         <td>
-                            @if($reservation->used == 1) @lang('bt.reserved') @endif
+                            @if($reservation->used == 1) 
+                                @foreach($invoiceItems as $invoiceItem)
+                                    @if($invoiceItem->name == $reservation->name)
+                                    #{{ $invoiceItem->invoice->number }}
+                                    @endif
+                                @endforeach
+                            @endif
                             @if($reservation->used == 0) @lang('bt.available') @endif
                         </td>
                         <td>{{ $reservation->description }}</td>

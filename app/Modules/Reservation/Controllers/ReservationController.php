@@ -33,12 +33,14 @@ class ReservationController extends Controller
 
     public function store(ReservationRequest $request)
     {
-        Reservation::create($request->all());
+        $res = Reservation::create($request->all());
         $roomsData = $request->input('rooms');
         $clientId = $request->input('client_id');
-        $rooms = collect($roomsData)->map(function($data) use ($clientId){
+        $reservationId = $res->id;
+        $rooms = collect($roomsData)->map(function($data) use ($clientId, $reservationId){
            return [
                'client_id' => $clientId,
+               'reservation_id' => $reservationId,
                'name' => "Room ID : ".strval($clientId),
                'purchase_price' => $data['purchase_price'],
                'selling_price' => $data['selling_price'],
@@ -56,12 +58,34 @@ class ReservationController extends Controller
 
     public function edit(Reservation $reservation)
     {
-        return view('reservations.edit', compact('reservation'));
+        $reservation_rooms = Room::where('reservation_id', $reservation->id)->get();
+
+        return view('reservations.edit', compact('reservation', 'reservation_rooms'));
     }
 
     public function update(ReservationRequest $request, Reservation $reservation)
     {
         $reservation->update($request->all());
+        $roomsData = $request->input('rooms');
+        $clientId = $request->input('client_id');
+        $reservationId = $reservation->id;
+        
+        $rooms = collect($roomsData)->map(function($data) use ($clientId, $reservationId){
+            return [
+                'client_id' => $clientId,
+                'reservation_id' => $reservationId,
+                'name' => "Room ID : ".strval($clientId),
+                'purchase_price' => $data['purchase_price'],
+                'selling_price' => $data['selling_price'],
+                'adults_number' => $data['adults_number'],
+                'kids_number' => $data['kids_number'],
+                'number' => intval($data['adults_number']) + intval($data['kids_number']),
+                'type' => $data['type'],
+                'room_formula' => $data['room_formula']
+            ];
+         })->toArray();
+ 
+         Room::updateOrCreate($rooms);
         return redirect()->route('reservations.index');
     }
 

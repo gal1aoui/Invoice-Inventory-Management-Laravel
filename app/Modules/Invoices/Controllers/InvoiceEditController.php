@@ -49,7 +49,7 @@ class InvoiceEditController extends Controller
     public function autocomplete(ReservationRequest $request)
     {
         $term = $request->input('name');
-        $products = Reservation::where('name', 'LIKE', '%'.$term.'%')->where('used', '0')->get()->pluck('name');
+        $products = Reservation::where('name', 'LIKE', '%'.$term.'%')->where('used', '0')->get()->pluck('name', 'id');
         return response()->json($products);
     }
 
@@ -90,6 +90,13 @@ class InvoiceEditController extends Controller
                         $newitem->is_tracked = 1;
                         $newitem->save();
                     }
+                }
+                
+                $reservation = Reservation::where('name', $item['name'])->first();
+                if($reservation)
+                {
+                    $reservation->used = 1;
+                    $reservation->update();
                 }
 
                 if ($saveItemAsLookup) {
@@ -151,6 +158,7 @@ class InvoiceEditController extends Controller
                 }
                 $invoiceItem->fill($item);
                 $invoiceItem->save();
+                
             }
         }
     }

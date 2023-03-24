@@ -33,7 +33,7 @@
                 <input type="datetime-local" name="end_time" class="form-control">
                 <br>
                 <label>@lang('bt.description') :</label>
-                <input type="text" name="description" class="form-control">
+                <textarea name="description" class="form-control"></textarea>
                 <br>
                 <label>@lang('bt.client') :</label>
                 <div class="form-group">

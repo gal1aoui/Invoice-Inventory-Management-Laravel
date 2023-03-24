@@ -17,6 +17,7 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('client_id')->index('clients')->nullable();
+            $table->unsignedBigInteger('reservation_id')->index('reservations')->nullable();
             $table->string('name');
             $table->decimal('purchase_price', 15, 2)->default('0.00');
             $table->decimal('selling_price', 15, 2)->default('0.00');

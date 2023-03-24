@@ -51,7 +51,7 @@ class RoomController extends Controller
     public function destroy(Room $room)
     {
         $room->delete();
-        return redirect()->route('rooms.index');
+        return redirect(url()->current());
     }
 
 
