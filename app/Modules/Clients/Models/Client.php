@@ -93,6 +93,11 @@ class Client extends Model
         return $this->hasMany('BT\Modules\Invoices\Models\Invoice');
     }
 
+    public function reservations()
+    {
+        return $this->hasMany('BT\Modules\Reservation\Models\Reservation');
+    }
+
     public function payments()
     {
         return $this->hasMany('BT\Modules\Payments\Models\Payment');

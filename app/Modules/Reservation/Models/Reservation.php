@@ -26,6 +26,10 @@ class Reservation extends Model
 	protected $table = 'reservations';
 
     protected $fillable = ['name', 'used', 'hotel', 'email', 'start_time', 'end_time','description','client_id','vendor_id'];
+    public function reservations()
+    {
+        return $this->belongsTo(Client::class);
+    }
 
     public function client()
     {
